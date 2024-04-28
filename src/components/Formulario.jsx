@@ -1,29 +1,31 @@
 import { useState, useEffect, useRef } from "react";
 import Alerta from "./Alerta";
-import useProductos from "../hooks/useProductos";
+import useCanciones from "../hooks/useCanciones";
 
 const Formulario = () => {
-  const { guardarProducto, producto } = useProductos();
+  const { guardarCancion, cancion } = useCanciones();
   const [nombre, setNombre] = useState("");
-  const [precio, setPrecio] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [piezas, setPiezas] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+  const [album, setAlbum] = useState("");
+  const [ano_lanzamiento, setLanzamiento] = useState("");
+  const [duracion, setDuracion] = useState("");
+  const [compositor, setCompositor] = useState("");
+  const [productor, setProductor] = useState("");
   const [email, setEmail] = useState("");
-  const [idProducto, setId] = useState(null)
+  const [id_cancion, setId] = useState(null)
 
   useEffect(() => {
-    if (producto.idProducto !== "") {
-        setNombre(producto.nombre || "");
-        setPrecio(producto.precio || "");
-        setCategoria(producto.categoria || "");
-        setPiezas(producto.piezas || "");
-        setDescripcion(producto.descripcion || "");
-        setEmail(producto.email || "");
-        setId(producto.idProducto || "");
+    if (cancion.id_cancion !== "") {
+        setNombre(cancion.nombre || "");
+        setAlbum(cancion.album || "");
+        setLanzamiento(cancion.ano_lanzamiento || "");
+        setDuracion(cancion.duracion || "");
+        setCompositor(cancion.compositor || "");
+        setProductor(cancion.productor || "");
+        setEmail(cancion.email || "");
+        setId(cancion.id_cancion || "");
         // No actualices el estado de email aquí
     }
-  }, [producto]);
+  }, [cancion]);
   
   
   
@@ -32,25 +34,29 @@ const Formulario = () => {
     e.preventDefault();
 
     // Crear un objeto con los datos del formulario
-    const nuevoProducto = {
+    const nuevoCancion = {
       nombre,
-      precio,
-      categoria,
-      piezas,
-      descripcion,
+      album,
+      ano_lanzamiento,
+      duracion,
+      compositor,
+      productor,
       email,
-      idProducto
+      id_cancion
     };
 
     // Enviar los datos al backend utilizando la función guardarProducto del hook
-    await guardarProducto(nuevoProducto);
+    await guardarCancion(nuevoCancion);
+
+    console.log(nuevoCancion);
 
     // Limpiar el formulario después de enviar los datos
     setNombre("");
-    setPrecio("");
-    setCategoria("");
-    setPiezas("");
-    setDescripcion("");
+    setCompositor("");
+    setAlbum("");
+    setDuracion("");
+    setLanzamiento("");
+    setProductor("");
     setEmail("");
     setId("")
   };
@@ -58,11 +64,11 @@ const Formulario = () => {
   return (
     <>
       <h2 className="font-black text-3xl text-center">
-        Administrador de Productos
+        Administrador de Canciones
       </h2>
 
       <p className="text-xl mt-5 mb-10 text-center">
-        Añade tus Productos y {""}
+        Añade tus Canciones Favoritas y {""}
         <span className="text-teal-600 font-bold">Administralos</span>
       </p>
 
@@ -86,15 +92,28 @@ const Formulario = () => {
 
         <div className="mb-5">
           <label htmlFor="number" className="text-gray-700 uppercase font-bold">
-            Precio
+          album
           </label>
           <input
-            id="precio"
-            type="number"
-            placeholder="Precio"
+            id="album"
+            type="text"
+            placeholder="album"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            value={precio}
-            onChange={e => setPrecio(e.target.value)}
+            value={album}
+            onChange={e => setAlbum(e.target.value)}
+          />
+        </div>
+        <div className="mb-5">
+          <label htmlFor="number" className="text-gray-700 uppercase font-bold">
+          Compositor
+          </label>
+          <input
+            id="compositor"
+            type="text"
+            placeholder="compositor"
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={compositor}
+            onChange={e => setCompositor(e.target.value)}
           />
         </div>
 
@@ -103,47 +122,47 @@ const Formulario = () => {
             htmlFor="categoria"
             className="text-gray-700 uppercase font-bold"
           >
-            Categoria
+            Año de lanzamiento
           </label>
           <input
-            id="categoria"
-            type="text"
+            id="ano_lanzamiento"
+            type="date"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            value={categoria}
-            onChange={e => setCategoria(e.target.value)}
+            value={ano_lanzamiento}
+            onChange={e => setLanzamiento(e.target.value)}
           />
         </div>
 
         <div className="mb-5">
           <label htmlFor="piezas" className="text-gray-700 uppercase font-bold">
-            Piezas{" "}
+          Duracion
           </label>
           <input
-            id="piezas"
+            id="duracion"
             type="number"
-            placeholder="piezas"
+            placeholder="Duracion"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            value={piezas}
-            onChange={e => setPiezas(e.target.value)}
+            value={duracion}
+            onChange={e => setDuracion(e.target.value)}
           />
         </div>
 
         <div className="mb-5">
           <label
-            htmlFor="descripcion"
+            htmlFor="categoria"
             className="text-gray-700 uppercase font-bold"
           >
-            Descripción
+            Productor
           </label>
-          <textarea
-            id="descripcion"
-            placeholder="Describe el producto"
+          <input
+            id="Productor"
+            type="text"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            value={descripcion}
-            onChange={e => setDescripcion(e.target.value)}
+            value={productor}
+            onChange={e => setProductor(e.target.value)}
           />
         </div>
-
+        
         <div className="mb-5">
           <label
             htmlFor="descripcion"
@@ -153,7 +172,7 @@ const Formulario = () => {
           </label>
           <textarea
             id="email"
-            placeholder="Describe el producto"
+            placeholder="Email@emil.com"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             value={email}
             onChange={e => setEmail(e.target.value)}
@@ -163,7 +182,7 @@ const Formulario = () => {
         <input
           type="submit"
           className="bg-teal-600 w-full p-3 text-white uppercase font-bold hover:bg-teal-700 cursor-pointer transition-colors"
-          value={producto.idProducto ? 'Guardar Cambios' : 'Agregar Producto'}
+          value={cancion.id_cancion ? 'Guardar Cambios' : 'Agregar Producto'}
         />
       </form>
     </>

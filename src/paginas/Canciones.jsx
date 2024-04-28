@@ -1,8 +1,8 @@
 import { useState  } from "react";
 import Formulario from "../components/Formulario";
-import ListadoProductos from "../components/ListadoProductos";
+import ListadoCanciones from "../components/ListadoCanciones";
 
-const Productos = () => {
+const Canciones = () => {
     const [mostrarFormulario, setMostrarFormulario] = useState(false) 
   
     return (
@@ -19,10 +19,10 @@ const Productos = () => {
             </div>
             
             <div className="md:w-1/2 lg:w-3/5">
-              <ListadoProductos />
+              <ListadoCanciones />
             </div> 
         </div>
     );
   };
   
-export default Productos;
+export default Canciones;
