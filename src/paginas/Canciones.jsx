@@ -9,7 +9,7 @@ const Canciones = () => {
         <div className="flex flex-col md:flex-row">
             <button 
               type="button"
-              className='bg-teal-600 text-white font-bold uppercase mx-10 p-3 rounded-md mb-10 md:hidden  hover:bg-teal-800'
+              className='bg text-white font-bold uppercase mx-10 p-3 rounded-md mb-10 md:hidden  hover:bg-teal-800'
               onClick={() => setMostrarFormulario(!mostrarFormulario)} 
             ></button>
   
