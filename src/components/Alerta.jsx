@@ -7,3 +7,5 @@ const Alerta = ({alerta}) => {
 };
 
 export default Alerta;
+
+// Creacion del estilos de las alertas
