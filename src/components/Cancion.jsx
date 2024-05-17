@@ -17,7 +17,7 @@ const Cancion = ({ cancion }) => {
             <p className="font-bold uppercase text-teal-700 my-2">Año lanzamiento {''}
                 <span className="font-normal normal-case text-black">{ano_lanzamiento}</span>
             </p>
-            <p className="font-bold uppercase text-teal-700 my-2">Duracion: {''}
+            <p className="font-bold uppercase text-teal-700 my-2">Duracqwqwqwqwion: {''}
                 <span className="font-normal normal-case text-black">{duracion}</span>
             </p>
             <p className="font-bold uppercase text-teal-700 my-2">Compositor: {''}
