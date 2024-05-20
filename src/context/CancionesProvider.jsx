@@ -9,7 +9,7 @@ export const CancionesProvider = ({ children }) => {
     useEffect(() => {
         const obtenerCanciones = async () => {
             try {
-                const { data } = await clienteAxios.get('/api/v1/cliente');
+                const { data } = await clienteAxios.get('/cancion');
                 setCanciones(data);
             } catch (error) {
                 console.log(error);
@@ -21,11 +21,11 @@ export const CancionesProvider = ({ children }) => {
     const guardarCancion = async (cancion) => {
         try {
             if (cancion.id_cancion) {
-                const { data } = await clienteAxios.put(`/api/v1/cliente/${cancion.id_cancion}`, cancion); // Corregí la ruta para la actualización
+                const { data } = await clienteAxios.put(/cancion/${cancion.id_cancion}, cancion); // Corregí la ruta para la actualización
                 const cancionesActualizado = canciones.map(cancionState => cancionState.id_cancion === data.id_cancion ? data : cancionState);
                 setCanciones(cancionesActualizado);
             } else {
-                const { data } = await clienteAxios.post('/api/v1/cliente', cancion);
+                const { data } = await clienteAxios.post('/cancion', cancion);
                 setCanciones([...canciones, data]);
             }
         } catch (error) {
@@ -42,7 +42,7 @@ export const CancionesProvider = ({ children }) => {
 
         if(confirmar) {
             try {
-                await clienteAxios.delete(`/api/v1/cliente/${id_cancion}`); // Realiza la petición DELETE al backend
+                await clienteAxios.delete(/cancion/${id_cancion}); // Realiza la petición DELETE al backend
                 const cancionesActualizado = canciones.filter(canciones => canciones.id_cancion !== id_cancion); // Filtra los productos para excluir el eliminado
                 setCanciones(cancionesActualizado); // Actualiza el estado de productos con la lista filtrada
             } catch (error) {
