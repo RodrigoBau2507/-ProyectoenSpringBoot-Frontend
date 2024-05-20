@@ -2,32 +2,41 @@ import useCanciones from "../hooks/useCanciones";
 
 const Cancion = ({ cancion }) => {
     const { setEdicion, eliminarCancion } = useCanciones();
-    const { nombre, album, ano_lanzamiento, duracion, compositor, productor, id_cancion, email } = cancion;
+    const { nombre, album, año_lanzamiento, duracion, compositor, productor, id_cancion, email, url, descripcion } = cancion;
 
-    
-
+    const formatearFecha = (fecha) => {
+        return new Date(fecha).toLocaleDateString();
+ 
+       
+    }
     return (
-        <div key={id_cancion} className="mx-5 my-10 bg-slate-400 shadow-md px-5 py-10 rounded-xl">
-            <p className="font-bold uppercase text-teal-700 my-2">Nombre: {''}
-                <span className="font-normal normal-case text-black">{nombre}</span>
+        <div key={id_cancion} className="mx-5 my-10 bg-gray-500 py-10 px-5 mb-10 lg:mb-5 shadow-md rounded-md font-lista">
+            <p className="font-bold uppercase text-black my-2 ">Nombre: {''}
+                <span className="font-normal normal-case text-white">{nombre}</span>
             </p>
-            <p className="font-bold uppercase text-teal-700 my-2">Album: {''}
-                <span className="font-normal normal-case text-black">{album}</span>
+            <p className="font-bold uppercase text-black my-2">Album: {''}
+                <span className="font-normal normal-case text-white">{album}</span>
             </p>
-            <p className="font-bold uppercase text-teal-700 my-2">Año lanzamiento {''}
-                <span className="font-normal normal-case text-black">{ano_lanzamiento}</span>
+            <p className="font-bold uppercase text-black my-2">Año lanzamiento {''}
+                <span className="font-normal normal-case text-white"> {formatearFecha(año_lanzamiento)}</span>
             </p>
-            <p className="font-bold uppercase text-teal-700 my-2">Duracqwqwqwqwion: {''}
-                <span className="font-normal normal-case text-black">{duracion}</span>
+            <p className="font-bold uppercase  text-black my-2">Duracion: {''}
+                <span className="font-normal normal-case text-white">{duracion}</span>
             </p>
-            <p className="font-bold uppercase text-teal-700 my-2">Compositor: {''}
-                <span className="font-normal normal-case text-black">{compositor}</span>
+            <p className="font-bold uppercase  text-black my-2">Compositor: {''}
+                <span className="font-normal normal-case text-white">{compositor}</span>
             </p>
-            <p className="font-bold uppercase text-teal-700 my-2">Productor: {''}
-                <span className="font-normal normal-case text-black">{productor}</span>
+            <p className="font-bold uppercase  text-black my-2">Productor: {''}
+                <span className="font-normal normal-case text-white">{productor}</span>
             </p>
-            <p className="font-bold uppercase text-teal-700 my-2">Email: {''}
-                <span className="font-normal normal-case text-black">{email}</span>
+            <p className="font-bold uppercase  text-black my-2">Email: {''}
+                <span className="font-normal normal-case text-white">{email}</span>
+            </p>
+            <p className="font-bold uppercase  text-black my-2">Url: {''}
+                <span className="font-normal normal-case text-white">{url}</span>
+            </p>
+            <p className="font-bold uppercase  text-black my-2">Descripcion: {''}
+                <span className="font-normal normal-case text-white">{descripcion}</span>
             </p>
 
             <div className="flex justify-between my-5">
