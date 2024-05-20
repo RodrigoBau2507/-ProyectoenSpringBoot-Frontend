@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-//A esto se concidera como un fragment y no genera mas codigo html
-//<>
-//</>
-
-=======
->>>>>>> f73af4e705ccc0af52a618a38a26ba3962d3e8da
 import { Outlet } from "react-router-dom";
 import imagen from "../../public/img/Logo.png";
 const AuthLayout = () => {

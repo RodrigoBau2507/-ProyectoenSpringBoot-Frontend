@@ -21,11 +21,9 @@ export const CancionesProvider = ({ children }) => {
     const guardarCancion = async (cancion) => {
         try {
             if (cancion.id_cancion) {
-<<<<<<< HEAD
+
                 const { data } = await clienteAxios.put(`/cancion/${cancion.id_cancion}`, cancion); // Corregí la ruta para la actualización
-=======
-                const { data } = await clienteAxios.put(/cancion/${cancion.id_cancion}, cancion); // Corregí la ruta para la actualización
->>>>>>> f73af4e705ccc0af52a618a38a26ba3962d3e8da
+
                 const cancionesActualizado = canciones.map(cancionState => cancionState.id_cancion === data.id_cancion ? data : cancionState);
                 setCanciones(cancionesActualizado);
             } else {
@@ -46,11 +44,10 @@ export const CancionesProvider = ({ children }) => {
 
         if(confirmar) {
             try {
-<<<<<<< HEAD
+
                 await clienteAxios.delete(`/cancion/${id_cancion}`); // Realiza la petición DELETE al backend
-=======
-                await clienteAxios.delete(/cancion/${id_cancion}); // Realiza la petición DELETE al backend
->>>>>>> f73af4e705ccc0af52a618a38a26ba3962d3e8da
+
+               
                 const cancionesActualizado = canciones.filter(canciones => canciones.id_cancion !== id_cancion); // Filtra los productos para excluir el eliminado
                 setCanciones(cancionesActualizado); // Actualiza el estado de productos con la lista filtrada
             } catch (error) {
